@@ -1,19 +1,12 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import songsReducer from "./slice/songsSlice";
-// import createSagaMiddleware from "redux-saga";
-// import { rootSaga } from "./sagas/index";
-// import statReducer from "./slice/getStatSlice";
-// const sagaMiddleware = createSagaMiddleware();
+import { configureStore} from "@reduxjs/toolkit";
+import ceoSlice from "./redux_toolkit/ceoSlice"; // Import Redux Thunk middleware
 
-// const store = configureStore({
-//   reducer: {
-//     songs: songsReducer,
-//     statistics: statReducer,
-//   },
-// });
+const store = configureStore({
+  reducer: {
+    ceo: ceoSlice,
+  }, 
+});
 
-// sagaMiddleware.run(rootSaga);
-
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;
-// export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export default store;

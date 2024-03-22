@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import store from "../services/store";
+import { Provider } from "react-redux";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/sidebar";
@@ -18,18 +20,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <ColorSchemeScript />
-      </head>
-      <body className={inter.className}>
-        <div className="flex h-screen w-full bg-gray-100">
-          <Sidebar />
-          <div className="flex flex-col w-full h-full ml-64 p-4">
-            <MantineProvider>{children}</MantineProvider>
+    <Provider store={store}>
+      {" "}
+      {/* Wrap your entire application with the Provider */}
+      <html lang="en">
+        <head>
+          <ColorSchemeScript />
+        </head>
+        <body className={inter.className}>
+          <div className="flex h-screen w-full bg-gray-100">
+            <Sidebar />
+            <div className="flex flex-col w-full h-full ml-64 p-4">
+              <MantineProvider>{children}</MantineProvider>
+            </div>
           </div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </Provider>
   );
 }
