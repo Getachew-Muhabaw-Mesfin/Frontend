@@ -14,7 +14,7 @@ export const getAllChiefs = async (): Promise<AxiosResponse<Chief[]>> => {
 };
 
 export const getSingleChief = async (
-  id: string
+  id: number
 ): Promise<AxiosResponse<Chief>> => {
   return axiosInstance.get(`/chiefs/${id}`);
 };
@@ -26,12 +26,12 @@ export const createChief = async (
 };
 
 export const updateChief = async (
-  id: string,
+  id: number,
   chiefDetails: Chief
 ): Promise<AxiosResponse<Chief>> => {
   return axiosInstance.patch(`/chiefs/${id}`, chiefDetails);
 };
 
-export const deleteChief = async (id: string): Promise<AxiosResponse<void>> => {
+export const deleteChief = async (id: number): Promise<AxiosResponse<void>> => {
   return axiosInstance.delete(`/chiefs/${id}`);
 };

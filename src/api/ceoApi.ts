@@ -27,6 +27,6 @@ export const updateCeo = async (id: string, ceoDetails: CEO): Promise<AxiosRespo
   return axiosInstance.patch(`/ceo/${id}`, ceoDetails);
 };
 
-export const deleteCeo = async (id: string): Promise<AxiosResponse<void>> => {
+export const deleteCeo = async (id: number): Promise<AxiosResponse<void>> => {
   return axiosInstance.delete(`/ceo/${id}`);
 };

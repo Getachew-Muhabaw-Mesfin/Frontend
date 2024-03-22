@@ -16,7 +16,7 @@ export const getAllDepartments = async (): Promise<
 };
 
 export const getSingleDepartment = async (
-  id: string
+  id: number
 ): Promise<AxiosResponse<Department>> => {
   return axiosInstance.get(`/departments/${id}`);
 };
@@ -28,14 +28,14 @@ export const createDepartment = async (
 };
 
 export const updateDepartment = async (
-  id: string,
+  id: number,
   departmentDetails: Department
 ): Promise<AxiosResponse<Department>> => {
   return axiosInstance.patch(`/departments/${id}`, departmentDetails);
 };
 
 export const deleteDepartment = async (
-  id: string
+  id: number
 ): Promise<AxiosResponse<void>> => {
   return axiosInstance.delete(`/departments/${id}`);
 };
