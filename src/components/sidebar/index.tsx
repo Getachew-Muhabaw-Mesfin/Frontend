@@ -2,23 +2,18 @@
 import {
   LucideIcon,
   LayoutDashboard,
-  BadgeDollarSign,
   CircleUserRound,
-  Settings,
-  WalletCards,
+  Users,
+  Boxes,
+  Building,
 } from "lucide-react";
+
 import SidebarItem from "./item";
 
 interface ISidebarItem {
   name: string;
   path: string;
   icon: LucideIcon;
-  items?: ISubItem[];
-}
-
-interface ISubItem {
-  name: string;
-  path: string;
 }
 
 const items: ISidebarItem[] = [
@@ -28,38 +23,19 @@ const items: ISidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
-    name: "Transaction",
-    path: "/transaction",
-    icon: BadgeDollarSign,
+    name: "CEO",
+    path: "/ceo",
+    icon: Boxes,
   },
   {
-    name: "Payment",
-    path: "/payment",
-    icon: WalletCards,
+    name: "Chiefs",
+    path: "/chief",
+    icon: Building,
   },
   {
-    name: "Accounts",
-    path: "/accounts",
-    icon: CircleUserRound,
-  },
-  {
-    name: "Settings",
-    path: "/settings",
-    icon: Settings,
-    items: [
-      {
-        name: "General",
-        path: "/settings",
-      },
-      {
-        name: "Security",
-        path: "/settings/security",
-      },
-      {
-        name: "Notifications",
-        path: "/settings/notifications",
-      },
-    ],
+    name: "Departments",
+    path: "/department",
+    icon: Users,
   },
 ];
 
