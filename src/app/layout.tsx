@@ -20,22 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Provider store={store}>
-      {" "}
-      {/* Wrap your entire application with the Provider */}
-      <html lang="en">
-        <head>
-          <ColorSchemeScript />
-        </head>
-        <body className={inter.className}>
-          <div className="flex h-screen w-full bg-gray-100">
-            <Sidebar />
-            <div className="flex flex-col w-full h-full ml-64 p-4">
-              <MantineProvider>{children}</MantineProvider>
-            </div>
+    <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body className={inter.className}>
+        <div className="flex h-screen w-full bg-gray-100">
+          <Sidebar />
+          <div className="flex flex-col w-full h-full ml-64 p-4">
+            <MantineProvider>{children}</MantineProvider>
           </div>
-        </body>
-      </html>
-    </Provider>
+        </div>
+      </body>
+    </html>
   );
 }

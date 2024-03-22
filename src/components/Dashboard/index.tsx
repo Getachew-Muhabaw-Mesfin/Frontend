@@ -1,35 +1,37 @@
 import { Paper, Text, ThemeIcon, Group, SimpleGrid } from "@mantine/core";
-import { IconArrowUpRight, IconArrowDownRight } from "@tabler/icons-react";
 import classes from "../../styles/StatsGridIcons.module.css";
 import { GiOrganigram } from "react-icons/gi";
 import { BsPersonVideo3 } from "react-icons/bs";
 import { FcDepartment } from "react-icons/fc";
+import { getAllCEO, getChiefs, getDepartments } from "../../api/stats";
 
-const data = [
-  {
-    title: "CEO",
-    value: "1",
-    diff: 34,
-    desc: "CEO | Chief Executive Officer of the company",
-    icon: <BsPersonVideo3  size={40}/>,
-  },
-  {
-    title: "Chiefs",
-    value: "4",
-    diff: -13,
-    desc: "Chief | Chief Officers of the company",
-    icon: <GiOrganigram size={40}/>,
-  },
-  {
-    title: "Departments",
-    value: "8",
-    diff: 18,
-    desc: "Departments | Departments of the company",
-    icon: <FcDepartment size={40}/>,
-  },
-];
-
-export function StatsGridIcons() {
+export async function StatsGridIcons() {
+  const allCEO = await getAllCEO();
+  const allChiefs = await getChiefs();
+  const allDepartments = await getDepartments();
+  const data = [
+    {
+      title: "CEO",
+      value: allCEO.length.toString(),
+      diff: 34,
+      desc: "CEO | Chief Executive Officer of the company",
+      icon: <BsPersonVideo3 size={40} />,
+    },
+    {
+      title: "Chiefs",
+      value: allChiefs.length.toString(),
+      diff: -13,
+      desc: "Chief | Chief Officers of the company",
+      icon: <GiOrganigram size={40} />,
+    },
+    {
+      title: "Departments",
+      value: allDepartments.length.toString(),
+      diff: 18,
+      desc: "Departments | Departments of the company",
+      icon: <FcDepartment size={40} />,
+    },
+  ];
   const stats = data.map((stat) => {
     return (
       <Paper withBorder p="md" radius="md" key={stat.title}>
