@@ -2,7 +2,6 @@
 import {
   LucideIcon,
   LayoutDashboard,
-  CircleUserRound,
   Users,
   Boxes,
   Building,

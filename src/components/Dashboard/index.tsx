@@ -11,21 +11,21 @@ const data = [
     value: "1",
     diff: 34,
     desc: "CEO | Chief Executive Officer of the company",
-    icon: <BsPersonVideo3 />,
+    icon: <BsPersonVideo3  size={40}/>,
   },
   {
     title: "Chiefs",
     value: "4",
     diff: -13,
     desc: "Chief | Chief Officers of the company",
-    icon: <GiOrganigram />,
+    icon: <GiOrganigram size={40}/>,
   },
   {
     title: "Departments",
     value: "8",
     diff: 18,
     desc: "Departments | Departments of the company",
-    icon: <FcDepartment />,
+    icon: <FcDepartment size={40}/>,
   },
 ];
 
