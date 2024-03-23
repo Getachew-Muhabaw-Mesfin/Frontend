@@ -8,6 +8,8 @@ import {
   Group,
   Text,
   TextInput,
+  Modal,
+  Button,
 } from "@mantine/core";
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
@@ -43,6 +45,8 @@ export function ChiefTable() {
   const [search, setSearch] = useState("");
   const [chiefs, setChiefs] = useState<Chief[]>([]);
   const [sortBy, setSortBy] = useState<keyof Chief | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +55,7 @@ export function ChiefTable() {
         setChiefs(response.data);
         console.log(response.data);
       } catch (error) {
-        console.error("Error fetching CEOs:", error);
+        console.error("Error fetching Chiefs:", error);
       }
     }
     fetchData();
@@ -67,11 +71,19 @@ export function ChiefTable() {
   };
 
   const handleDelete = async (id: number) => {
-    try {
-      await deleteChief(id);
-      setChiefs(chiefs.filter((chief) => chief.id !== id));
-    } catch (error) {
-      console.error("Error deleting Chiif:", error);
+    setDeleteId(id);
+    setModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (deleteId !== null) {
+      try {
+        await deleteChief(deleteId);
+        setChiefs(chiefs.filter((chief) => chief.id !== deleteId));
+      } catch (error) {
+        console.error("Error deleting Chief:", error);
+      }
+      setModalOpen(false);
     }
   };
 
@@ -100,11 +112,9 @@ export function ChiefTable() {
       >
         <Table.Tbody>
           <Table.Tr>
-            <Table.Th >
-              Name
-            </Table.Th>
-            <Table.Th >Description</Table.Th>
-            <Table.Th >Reports To</Table.Th>
+            <Th onSort={() => handleSort("name")}>Name</Th>
+            <Table.Th>Description</Table.Th>
+            <Table.Th>Reports To</Table.Th>
             <Table.Th>Actions</Table.Th>
           </Table.Tr>
         </Table.Tbody>
@@ -133,6 +143,22 @@ export function ChiefTable() {
           )}
         </Table.Tbody>
       </Table>
+      <Modal
+        opened={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Confirm Delete"
+        size="sm"
+      >
+        <Text>Are you sure you want to delete this Chief?</Text>
+        <div className=" flex justify-between mt-2">
+          <Button onClick={confirmDelete} color="red" variant="outline">
+            Delete
+          </Button>
+          <Button onClick={() => setModalOpen(false)} variant="outline">
+            Cancel
+          </Button>
+        </div>
+      </Modal>
     </ScrollArea>
   );
 }

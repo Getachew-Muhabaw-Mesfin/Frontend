@@ -8,6 +8,8 @@ import {
   Group,
   Text,
   TextInput,
+  Modal,
+  Button,
 } from "@mantine/core";
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
@@ -44,6 +46,8 @@ export function CeoTable() {
   const [search, setSearch] = useState("");
   const [ceos, setCeos] = useState<Ceo[]>([]);
   const [sortBy, setSortBy] = useState<keyof Ceo | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -67,12 +71,20 @@ export function CeoTable() {
     // You might want to sort the data here based on the field
   };
 
-  const handleDelete = async (id: number) => {
-    try {
-      await deleteCeo(id);
-      setCeos(ceos.filter((ceo) => ceo.id !== id));
-    } catch (error) {
-      console.error("Error deleting CEO:", error);
+  const handleDelete = (id: number) => {
+    setDeleteId(id);
+    setModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (deleteId !== null) {
+      try {
+        await deleteCeo(deleteId);
+        setCeos(ceos.filter((ceo) => ceo.id !== deleteId));
+      } catch (error) {
+        console.error("Error deleting CEO:", error);
+      }
+      setModalOpen(false);
     }
   };
 
@@ -134,6 +146,23 @@ export function CeoTable() {
           )}
         </Table.Tbody>
       </Table>
+      <Modal
+        opened={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Confirm Delete"
+        size="sm"
+      >
+        <Text>Are you sure you want to delete this CEO?</Text>
+        <div className=" flex justify-between mt-2">
+          <Button onClick={confirmDelete} color="red" variant="outline">
+            Delete
+          </Button>
+          <Button onClick={() => setModalOpen(false)} variant="outline">
+            Cancel
+          </Button>
+        </div>
+    
+      </Modal>
     </ScrollArea>
   );
 }
