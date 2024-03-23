@@ -14,6 +14,7 @@ import {
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
 import LoadingComponent from "../LoadingComponent";
+import AddCeo from "./AddCeo";
 
 interface Ceo {
   id: number;
@@ -105,6 +106,8 @@ export function CeoTable() {
         value={search}
         onChange={handleSearchChange}
       />
+
+      <AddCeo />
       <Table
         horizontalSpacing="md"
         verticalSpacing="xs"
@@ -161,7 +164,6 @@ export function CeoTable() {
             Cancel
           </Button>
         </div>
-    
       </Modal>
     </ScrollArea>
   );
