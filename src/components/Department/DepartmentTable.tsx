@@ -99,11 +99,9 @@ export function DepartmentTable() {
       >
         <Table.Tbody>
           <Table.Tr>
-            <Table.Th >
-             Name
-            </Table.Th>
+            <Th onSort={() => handleSort("name")}>Name</Th>
             <Table.Th>Description</Table.Th>
-            <Table.Th >Reports To</Table.Th>
+            <Table.Th>Reports To</Table.Th>
             <Table.Th>Actions</Table.Th>
           </Table.Tr>
         </Table.Tbody>

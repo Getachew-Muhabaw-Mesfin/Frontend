@@ -1,5 +1,6 @@
+import DepartmentTable from "@/components/Department/DepartmentTable";
 const Department = () => {
-  return <div>Department</div>;
+  return <DepartmentTable />;
 };
 
 export default Department;
