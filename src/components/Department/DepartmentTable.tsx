@@ -151,12 +151,12 @@ export function DepartmentTable() {
       >
         <Text>Are you sure you want to delete this department?</Text>
         <div className=" flex justify-between mt-2">
-        <Button onClick={confirmDelete} color="red" variant="outline">
-          Delete
-        </Button>
-        <Button onClick={() => setModalOpen(false)} variant="outline">
-          Cancel
-        </Button>
+          <Button onClick={confirmDelete} color="red" variant="outline">
+            Delete
+          </Button>
+          <Button onClick={() => setModalOpen(false)} variant="outline">
+            Cancel
+          </Button>
         </div>
       </Modal>
     </ScrollArea>
