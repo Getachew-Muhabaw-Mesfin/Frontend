@@ -1,7 +1,8 @@
 import React from "react";
+import CeoTable from "../../components/Ceo/CeoTable";
 
 const CEO = () => {
-  return <div>CEO page</div>;
+  return <CeoTable />;
 };
 
 export default CEO;

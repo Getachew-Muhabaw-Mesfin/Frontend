@@ -3,6 +3,7 @@ import axiosInstance from "./axiosInstance";
 
 // Define interfaces for response data
 interface CEO {
+  id:number;
   companyName: string;
   ceoName: string;
   name: string;
