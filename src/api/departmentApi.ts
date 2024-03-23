@@ -3,6 +3,7 @@ import axiosInstance from "./axiosInstance";
 
 // Define interfaces for response data
 interface Department {
+  id: number;
   name: string;
   description: string;
   chiefId: number;
