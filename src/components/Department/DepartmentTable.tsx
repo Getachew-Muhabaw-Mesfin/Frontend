@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { getAllDepartments, deleteDepartment } from "@/api/departmentApi";
 import {
   Table,
@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
+import LoadingComponent from "../LoadingComponent";
 
 interface Department {
   id: number;
@@ -126,13 +127,7 @@ export function DepartmentTable() {
               </Table.Tr>
             ))
           ) : (
-            <Table.Tr>
-              <Table.Td colSpan={4}>
-                <Text fw={500} ta="center">
-                  No CEOs found
-                </Text>
-              </Table.Td>
-            </Table.Tr>
+            <LoadingComponent />
           )}
         </Table.Tbody>
       </Table>

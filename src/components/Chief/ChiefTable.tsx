@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
+import LoadingComponent from "../LoadingComponent";
 
 interface Chief {
   id: number;
@@ -128,13 +129,7 @@ export function ChiefTable() {
               </Table.Tr>
             ))
           ) : (
-            <Table.Tr>
-              <Table.Td colSpan={4}>
-                <Text fw={500} ta="center">
-                  No CEOs found
-                </Text>
-              </Table.Td>
-            </Table.Tr>
+            <LoadingComponent />
           )}
         </Table.Tbody>
       </Table>

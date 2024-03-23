@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
+import LoadingComponent from "../LoadingComponent";
 
 interface Ceo {
   id: number;
@@ -100,15 +101,11 @@ export function CeoTable() {
       >
         <Table.Tbody>
           <Table.Tr>
-            <Table.Th onSort={() => handleSort("companyName")}>
-              Company Name
-            </Table.Th>
-            <Table.Th onSort={() => handleSort("ceoName")}>CEO Name</Table.Th>
-            <Table.Th onSort={() => handleSort("name")}>Role</Table.Th>
-            <Table.Th onSort={() => handleSort("description")}>
-              Description
-            </Table.Th>
-            <Table.Th onSort={() => {}}>Actions</Table.Th>
+            <Th onSort={() => handleSort("companyName")}>Company Name</Th>
+            <Th onSort={() => handleSort("ceoName")}>CEO Name</Th>
+            <Th onSort={() => handleSort("name")}>Role</Th>
+            <Th onSort={() => handleSort("description")}>Description</Th>
+            <Table.Th>Actions</Table.Th>
           </Table.Tr>
         </Table.Tbody>
         <Table.Tbody>
@@ -133,13 +130,7 @@ export function CeoTable() {
               </Table.Tr>
             ))
           ) : (
-            <Table.Tr>
-              <Table.Td colSpan={4}>
-                <Text fw={500} ta="center">
-                  No CEOs found
-                </Text>
-              </Table.Td>
-            </Table.Tr>
+            <LoadingComponent />
           )}
         </Table.Tbody>
       </Table>
