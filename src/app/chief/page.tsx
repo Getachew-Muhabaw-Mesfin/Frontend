@@ -1,7 +1,8 @@
 import React from "react";
+import ChiefTable from "../../components/Chief/ChiefTable";
 
 const Chief = () => {
-  return <div>chief Page</div>;
+  return <ChiefTable />;
 };
 
 export default Chief;
