@@ -14,6 +14,7 @@ import {
 import { IconSearch, IconEdit, IconTrash } from "@tabler/icons-react";
 import classes from "../../styles/Table.module.css";
 import LoadingComponent from "../LoadingComponent";
+import AddChief from "./AddChief";
 
 interface Chief {
   id: number;
@@ -104,6 +105,7 @@ export function ChiefTable() {
         value={search}
         onChange={handleSearchChange}
       />
+      <AddChief />
       <Table
         horizontalSpacing="md"
         verticalSpacing="xs"
