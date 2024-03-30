@@ -22,19 +22,9 @@ const items: ISidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
-    name: "CEO",
-    path: "/ceo",
-    icon: Boxes,
-  },
-  {
-    name: "Chiefs",
-    path: "/chief",
-    icon: Building,
-  },
-  {
-    name: "Departments",
+    name: "Department",
     path: "/department",
-    icon: Users,
+    icon: Boxes,
   },
 ];
 

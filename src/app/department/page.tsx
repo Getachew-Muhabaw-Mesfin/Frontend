@@ -1,4 +1,6 @@
-import DepartmentTable from "@/components/Department/DepartmentTable";
+import React from "react";
+import DepartmentTable from "../../components/Department/DepartmentTable";
+
 const Department = () => {
   return <DepartmentTable />;
 };
